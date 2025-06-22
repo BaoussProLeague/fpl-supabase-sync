@@ -1,27 +1,26 @@
-name: Sync FPL Data to Supabase
+name: Sync FPL Data
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
-  workflow_dispatch:        # Enables manual run from GitHub UI
+    - cron: '0 */6 * * *'  # every 6 hours
+  workflow_dispatch:        # enables manual trigger
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run FPL script
-        run: node sync-fpl.js
+      - name: Run FPL Sync Script
+        run: node sync-fpl-to-supabase.js
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
