@@ -5,6 +5,6 @@
   "main": "sync-fpl-to-supabase.js",
   "dependencies": {
     "@supabase/supabase-js": "^2.42.0",
-    "node-fetch": "^3.4.0"
+    "node-fetch": "^3.3.2"
   }
 }
